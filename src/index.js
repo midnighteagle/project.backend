@@ -1,14 +1,20 @@
 // require("dotenv").config({path: "./.env"}) //
-import dotenv from "dotenv";
+import dotenv from "dotenv"; // ES6 Module Syntax
 
-import connectDB from "./db/index.js";
+import connectDB from "./db/index.js"; // Importing the connectDB function
 
-dotenv.config({
+dotenv.config({  // Specifying the env file paths configration
     path: "./.env"
 })
 
-connectDB()
-/*import mongoose from "mongoose";
+connectDB() // Calling the function to connect to the database
+
+
+
+
+/*  // it is apply when you don't use db/index.js file.
+
+import mongoose from "mongoose";
 
 import { DB_Name } from "./constants";
 

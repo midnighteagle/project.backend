@@ -1,5 +1,5 @@
 {
-    "singleQoutes" : false,
+    "singleQoutes" : false, 
     "bracketSpaceing": true,
     "tabwidth": 2,
     "trailingComma": "es5",
