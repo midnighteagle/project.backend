@@ -75,3 +75,7 @@ This is a video series on backend with javaScript.
 
 - gitignore : it is used to ignore file by the git 
 - .env :Create a .env file in the root of your project (if using a monorepo structure like apps/backend/app.js, put it in the root of the folder where your index.js process runs):S3_BUCKET="YOURS3BUCKET", SECRET_KEY="YOURSECRETKEYGOESHERE"
+
+
+
+### Now How connect database to the server
