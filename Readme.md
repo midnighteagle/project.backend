@@ -81,3 +81,7 @@ This is a video series on backend with javaScript.
 ### Now How connect database to the server
 
 - "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js" -> script to run the server in development mode with nodemon and dotenv
+
+
+
+### now starting new one 
