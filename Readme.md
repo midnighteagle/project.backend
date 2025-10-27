@@ -82,6 +82,15 @@ This is a video series on backend with javaScript.
 
 - "dev": "nodemon -r dotenv/config --experimental-json-modules src/index.js" -> script to run the server in development mode with nodemon and dotenv
 
+## for the app.js 
+- Here we install the package for the app.js which name is cookie-parser, cors.
+
+### now starting new one making the utils Folder files in the Src folder 
+- Here make a file that handle the errors
+- Here created a file that that give the response by the Api at the website 
+- Here a created a file of the AsyncHandler that handle the async function 
 
 
-### now starting new one 
+### Now lets talk about the middleWare .
+- Here first install the package for the bcrypt , jsonWebToken for the user.model.js for the models folder
+- Here first install the package for the video.model.js that is mongoose-aggregate-paginate-v2
