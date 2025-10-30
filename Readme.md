@@ -104,4 +104,13 @@ This is a video series on backend with javaScript.
 ### I have learn how to use middleware by writing the code in middleware folder by the help of multer
 - I have created a folder that name is multer.middleware.js 
 - To install the middleware package we use the command on the terrminal which name is :- npm i multer
-- Here we created a function of the storage by the help of multer. that help us to store the file on the given folder name public temp as original fileName.
+- Here we created a function of the storage by the help of multer. that help us to store the file on the given folder name public temp as original fileName
+
+
+
+
+### Here create a controller for the user in the controller folder 
+- here register the user in the controller by the previous created asyncHandler from the utils folder 
+
+### Here creating the new file in the routes folder that is helps in the creating the website router .
+- here we routes the website url using the route like the name of register 

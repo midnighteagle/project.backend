@@ -1,6 +1,7 @@
 // require("dotenv").config({path: "./.env"}) //
-import dotenv from "dotenv"; // ES6 Module Syntax
+import dotenv from "dotenv";
 
+import { app } from "./app.js";
 import connectDB from "./db/index.js"; // Importing the connectDB function
 
 dotenv.config({  // Specifying the env file paths configration
@@ -11,7 +12,7 @@ connectDB() // Calling the function to connect to the database
 .then(
     ()=>{
     app.listen(process.env.PORT || 8000,()=>{
-        console.log(`Server is running at port ${process/env.PORT || 8000}`)
+        console.log(`Server is running at port : ${process.env.PORT || 8000}`)
     })
     }
 )
