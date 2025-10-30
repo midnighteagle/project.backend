@@ -94,3 +94,14 @@ This is a video series on backend with javaScript.
 ### Now lets talk about the middleWare .
 - Here first install the package for the bcrypt , jsonWebToken for the user.model.js for the models folder
 - Here first install the package for the video.model.js that is mongoose-aggregate-paginate-v2
+
+
+### i have created a new file in the utils name cloudinary.js
+- for the creation the file i need install a package for that which name is cloudinary :- npm i cloudinary
+-  now i have configured the cloudinary using the cloud name , api_key, api_secrets
+-  now i learn how to upload any file on the server using async and await and try_Catch method
+
+### I have learn how to use middleware by writing the code in middleware folder by the help of multer
+- I have created a folder that name is multer.middleware.js 
+- To install the middleware package we use the command on the terrminal which name is :- npm i multer
+- Here we created a function of the storage by the help of multer. that help us to store the file on the given folder name public temp as original fileName.

@@ -8,11 +8,13 @@ dotenv.config({  // Specifying the env file paths configration
 })
 
 connectDB() // Calling the function to connect to the database
-.then(()=>{
+.then(
+    ()=>{
     app.listen(process.env.PORT || 8000,()=>{
         console.log(`Server is running at port ${process/env.PORT || 8000}`)
     })
-})
+    }
+)
 .catch((error)=>{
     console.error("Failed to connect to the database:", error)
 })
