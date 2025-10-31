@@ -15,6 +15,8 @@ const registerUser = asyncHandler( async (req, res) => {
     // cheak for user creation 
     // return response.
 
+
+    // get user details from frontend
     const {fullname, email, username, password}= req.body
     console.log("email: ",email);
 
