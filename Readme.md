@@ -112,5 +112,36 @@ This is a video series on backend with javaScript.
 ### Here create a controller for the user in the controller folder 
 - here register the user in the controller by the previous created asyncHandler from the utils folder 
 
+
 ### Here creating the new file in the routes folder that is helps in the creating the website router .
 - here we routes the website url using the route like the name of register 
+
+
+### update the file userController 
+- get user details from frontend
+- validation  - not empty
+- cheak if user already exists: username , email
+- cheak for image , cheak for avatar
+- upload them to cloudinary, avatar
+- create user object - create entry in DB
+- remove password and refresh token feild from response
+- cheak for user creation 
+- return response.
+
+
+### In the user Routes we upadated a thing that is upload Feilds
+                upload.fields([
+                        {
+                            name: "avatar",
+                            maxCount: 1
+                        },
+                        {
+                            name: "coverImage",
+                            maxCount : 1
+                        },
+                    ]),
+
+
+- In the file Api Response I EXPORTED Api response
+
+- here I keep await function to Bcrypt the password
