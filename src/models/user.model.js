@@ -4,7 +4,7 @@ import mongoose, { Schema } from "mongoose";
 
 const userSchema = new Schema (
     {
-    usename : {
+    username : {
         type : String,
         required : true,
         unique : true,
@@ -28,7 +28,7 @@ const userSchema = new Schema (
         index : true, 
         
     },
-    avtar : {
+    avatar : {
         type : String, // cloudnary url 
         required : true,
         
