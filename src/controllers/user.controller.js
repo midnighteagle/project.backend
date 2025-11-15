@@ -18,7 +18,7 @@ const registerUser = asyncHandler( async (req, res) => {
 
     // get user details from frontend
     const {fullname, email, username, password}= req.body
-    console.log("email: ",email);
+    //console.log("email: ",email);
 
 
     // validation 
@@ -39,10 +39,20 @@ const registerUser = asyncHandler( async (req, res) => {
     if(existedUser){
         throw new ApiError(409,"User with email or username already exist")
     }
+    //console.log(req.files); // it is used to cheak on the console to get the file details.
 
     // cheak for image , cheak for avatar
     const avatarLocalPath = req.files?.avatar[0]?.path
-    const coverImageLocalPath = req.files?.coverImage [0]?.path;
+    //const coverImageLocalPath = req.files?.coverImage [0]?.path;
+
+    let coverImageLocalPath; 
+    if (req.files && Array.isArray(req.files.coverImage)&& req.files.coverImage.length>0) {
+        coverImageLocalPath = req.files.coverImage[0].path;
+    }
+
+
+
+
 
     if(!avatarLocalPath){
         throw new ApiError(400, "Avatar file is required")
@@ -66,19 +76,19 @@ const registerUser = asyncHandler( async (req, res) => {
         password,
         username: username.toLowerCase()
     })
-    // remove password and refresh token feild from response
-    const createdUser = User.findById(user._id).select (
+    // remove password and refresh token field from response
+    const createdUser = await User.findById(user._id).select(
         "-password -refreshToken"
     )
 
-    // cheak for user creation
+    // check for user creation
     if (!createdUser) {
-        throw new ApiError(500, "Something went Wrong While registering the User")
+        throw new ApiError(500, "Something went wrong while registering the user")
     }
-    // return response.
-    return res.status(201).json(
-        new ApiResponse(200, createdUser, "User Registered Sucessfully")
-    )
 
+    // return response. Ensure ApiResponse parameters are (statusCode, message, data)
+    return res.status(201).json(
+        new ApiResponse(201, "User Registered Successfully", createdUser)
+    )
 })
 export { registerUser };
