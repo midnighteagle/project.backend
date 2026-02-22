@@ -51,7 +51,7 @@ const userSchema = new Schema (
         required: [true, 'Password is required ']
 
     },
-    refrenceToken:{
+    refreshToken:{
         type: String
     }
 
@@ -62,15 +62,15 @@ const userSchema = new Schema (
 )
 
 
-userSchema.pre("Save",async function(next) {
-    if(this.isModified("password")) return next();
+userSchema.pre("save", async function() {
+    if(!this.isModified("password")) return ;
 
-    this.password = await bcrypt.hash(this.password,10)
-    next()
+    this.password = await bcrypt.hash(this.password, 10)
+    
 })
 
 userSchema.methods.isPasswordCorrect = async function(password){
-    return await bcrypt.compare(password, this.password)
+    return await bcrypt.compare(password, this.password) 
 }
 
 userSchema.methods.generateAccessToken = function(){
