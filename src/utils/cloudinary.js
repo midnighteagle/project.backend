@@ -24,5 +24,23 @@ import fs from "fs";
             fs.unlinkSync(localFilePath)// remove the locally saved temp files as the upload operation got failed
             return null;
         }
-    }
-export { uploadOnCloudinary };
+    };
+    const FileUploadToCloudinary = async (localFilePath) =>{
+        try {
+            const UploadingFile = await uploadOnCloudinary(localFilePath);
+            return UploadingFile;
+        } catch (error) {
+            console.error("Error uploading file to Cloudinary:", error);
+            return null;
+        }
+    };
+    const deleteFileFromCloudinary = async(publicId)=>{
+        try {
+            const FileDeleting = await cloudinary.uploader.destroy(publicId);
+            return FileDeleting;
+        } catch (error) {
+            console.error("Error deleting file from Cloudinary:", error);
+            return null;
+        }
+    };
+export { deleteFileFromCloudinary, FileUploadToCloudinary, uploadOnCloudinary };

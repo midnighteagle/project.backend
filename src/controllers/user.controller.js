@@ -2,11 +2,11 @@ import mongoose from "mongoose";
 
 import { User } from "../models/user.model.js";
 import { ApiError } from "../utils/ApiError.js";
-import { ApiResponse } from "../utils/apiResponse.js";
-import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { asyncHandler } from "../utils/asyscHandler.js";
 import {
-  deleteFile,
-  uploadFile,
+  deleteFileFromCloudinary,
+  FileUploadToCloudinary,
 } from "../utils/cloudinary.js";
 
 const generateRefreshAndAccessToken = async (id) => {
@@ -69,8 +69,8 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // Uploading images on cloudinary service
-    const avatar = await uploadFile(avatarPath);
-    const coverImage = await uploadFile(coverImagePath);
+    const avatar = await FileUploadToCloudinary(avatarPath);
+    const coverImage = await FileUploadToCloudinary(coverImagePath);
 
     // If upload on cloudinary failed for avatar , throw error
     if (!avatar) {
@@ -203,7 +203,7 @@ const updateAvatar = asyncHandler(async (req, res) => {
     if (!newAvatarPath) {
         throw new ApiError(400, "new avatar file is required");
     }
-    const avatarUrl = await uploadFile(newAvatarPath);
+    const avatarUrl = await FileUploadToCloudinary(newAvatarPath);
     if (!avatarUrl) {
         throw new ApiError("500", "server error while uploading avatar on cloudinary");
     }
@@ -218,7 +218,7 @@ const updateAvatar = asyncHandler(async (req, res) => {
 
     // deleting from cloudinary
 
-    await deleteFile(oldAvatar);
+    await deleteFileFromCloudinary(oldAvatar);
 
 
     return res.status(200).json(new ApiResponse(200, { user }, "avatar file updated successfully"))
@@ -230,7 +230,7 @@ const updateCoverImage = asyncHandler(async (req, res) => {
     if (!newCoverPath) {
         throw new ApiError(400, "new cover image file is required");
     }
-    const coverImageUrl = await uploadFile(newCoverPath);
+    const coverImageUrl = await FileUploadToCloudinary(newCoverPath);
     if (!coverImageUrl) {
         throw new ApiError("500", "server error while uploading cover image on cloudinary");
     }
@@ -243,7 +243,7 @@ const updateCoverImage = asyncHandler(async (req, res) => {
         new: true
     }).select("-password -refreshToken");
 
-    await deleteFile(oldCoverImage);
+    await deleteFileFromCloudinary(oldCoverImage);
 
     return res.status(200).json(new ApiResponse(200, { user }, "cover image file updated successfully"))
 })
@@ -346,6 +346,7 @@ const userChannelDetails = asyncHandler(async (req, res) => {
     }, "user channel info fetched successfully"));
 
 })
+
 
 const userWatchHistory = asyncHandler(async (req, res) => {
     if (!req.user) {

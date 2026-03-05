@@ -1,9 +1,9 @@
 import { Router } from "express";
 
 import {
+  generateRefreshAndAccessToken,
   loginUser,
   logoutUser,
-  refreshAccessToken,
   registerUser,
 } from "../controllers/user.controller.js";
 import { verifyJWT } from "../middlewares/auth.middleware.js";
@@ -19,10 +19,10 @@ router.route("/register").post(
         },
         {
             name: "coverImage",
-            maxCount : 1
+            maxCount: 1
         },
     ]),
-    
+
     registerUser
 
 )
@@ -32,7 +32,7 @@ router.route("/login").post(loginUser)
 
 //secured routes
 router.route("/logout").post(verifyJWT, logoutUser)
-router.route("/refresh-token").post(refreshAccessToken)
+router.route("/refresh-token").post(generateRefreshAndAccessToken)
 
 
 export default router 
